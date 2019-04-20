@@ -8,10 +8,10 @@ readme = "README.md"
 description = "A strongly typed RPC library for Transmission Daemon."
 
 [dependencies]
-chrono = { version = "*", features = ["serde"] }
-error-chain = { git = "https://github.com/brson/error-chain.git" }
-hyper = "*"
-serde = "*"
-serde_json = "*"
-serde_derive = "*"
-rustc-serialize = "*"
+chrono = { version = "0.4", features = ["serde"] }
+error-chain = "0.12"
+hyper = "0.10"
+serde = "1"
+serde_json = "1"
+serde_derive = "1"
+rustc-serialize = "0.3"

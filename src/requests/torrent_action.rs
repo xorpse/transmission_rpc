@@ -1,6 +1,5 @@
-use serde_json::Value;
+use serde_json::{Map, Value};
 use super::{Request, RequestArguments};
-use std::collections::BTreeMap;
 
 pub enum ActionType {
     Start,
@@ -45,22 +44,22 @@ impl Request for TorrentAction {
 
 impl RequestArguments for TorrentAction {
     fn arguments(&self) -> Value {
-        let mut args = BTreeMap::new();
+        let mut args = Map::new();
 
         match self.target {
             ActionTarget::All => (),
             ActionTarget::List { ref ids, ref hashes } => {
-                let mut vIds = ids.iter().map(|id| Value::U64(*id));
+                let mut vIds = ids.iter().map(|id| Value::Number((*id).into()));
                 let mut vHashes = hashes.iter().map(|hash| Value::String(hash.clone()));
                 let list = vIds.chain(vHashes).collect();
-                
+
                 args.insert("id".to_string(), Value::Array(list));
             },
             ActionTarget::RecentlyActive => {
                 args.insert("id".to_string(), Value::String("recently-active".to_string()));
             },
             ActionTarget::Single { id } => {
-                args.insert("id".to_string(), Value::U64(id));
+                args.insert("id".to_string(), Value::Number(id.into()));
             }
         }
 

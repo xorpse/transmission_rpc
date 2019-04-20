@@ -15,7 +15,7 @@ pub trait Response: Sized {
     fn from_value(v: Value) -> Result<Self>;
 }
 
-impl<T> Response for T where T: Deserialize {
+impl<T> Response for T where for<'de> T: Deserialize<'de> {
     fn from_value(v: Value) -> Result<T> {
         println!("{:?}", v);
         Ok(serde_json::from_value::<T>(v)?)

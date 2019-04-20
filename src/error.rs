@@ -24,7 +24,7 @@ pub mod daemon {
                 description("deamon returned an unsuccessfull status code")
                 display("deamon returned status code: {}", s)
             }
-            
+
             Message(msg: String) {
                 description("daemon returned an error message")
                 display("daemon error: {}", msg)
@@ -38,7 +38,7 @@ error_chain! {
         Deserialize(deserialize::Error, deserialize::ErrorKind);
         Daemon(daemon::Error, daemon::ErrorKind);
     }
-    
+
     foreign_links {
         Http(::hyper::Error);
         Io(::std::io::Error);
@@ -91,7 +91,7 @@ error_chain! {
 //             &Error::Io(_) => "IO error"
 //         }
 //     }
-    
+
 //     fn cause(&self) -> Option<&StdError> {
 //         match self {
 //             &Error::Http(ref e) => Some(e),
