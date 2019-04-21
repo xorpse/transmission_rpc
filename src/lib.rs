@@ -97,8 +97,6 @@ impl Transmission {
         let req_str = serde_json::to_string(&request.to_value())
             .map_err(|e| ::error::deserialize::Error::from(e))?;
 
-        println!("{:?}", req_str);
-
         let mut response = try!(self.client.post(self.url.clone())
             .headers(self.headers())
             .body(&*req_str)
