@@ -15,11 +15,11 @@ pub struct AddTorrent {
     filename: Option<String>,
     #[serde(skip_serializing_if="Option::is_none")]
     metainfo: Option<String>,
-    #[serde(rename="download_dir", skip_serializing_if="Option::is_none")]
+    #[serde(rename="download-dir", skip_serializing_if="Option::is_none")]
     _download_dir: Option<PathBuf>,
     #[serde(rename="paused", skip_serializing_if="Option::is_none")]
     _paused: Option<bool>,
-    #[serde(rename="peer_limit", skip_serializing_if="Option::is_none")]
+    #[serde(rename="peer-limit", skip_serializing_if="Option::is_none")]
     _peer_limit: Option<u32>,
 }
 

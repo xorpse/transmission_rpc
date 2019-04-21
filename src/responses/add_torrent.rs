@@ -35,7 +35,7 @@ impl Response for AddTorrent {
             true => "torrent-duplicate",
             false => "torrent-added"
         };
-        
+
         let info = info.as_object()
             .ok_or(ErrorKind::InvalidType("object".to_string(), field.to_string()))?;
 
